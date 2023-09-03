@@ -1,6 +1,5 @@
 -- Plugins
 -- lazy.nvim initialization.
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -97,7 +96,7 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 
 -- nvim-cmp
 local cmp = require("cmp")
---local lspkind = require("lspkind")
+local lspkind = require("lspkind")
 cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
@@ -116,20 +115,20 @@ cmp.setup({
         --{ name = "vsnip" },
     },
     mapping = cmp.mapping.preset.insert({
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-        ["<C-l>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm { select = true },
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        --["<C-p>"] = cmp.mapping.select_prev_item(),
+        --["<C-n>"] = cmp.mapping.select_next_item(),
+        -- ["<C-l>"] = cmp.mapping.complete(),
+        -- ["<C-e>"] = cmp.mapping.abort(),
+        -- ["<CR>"] = cmp.mapping.confirm { select = true },
+        -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
     }),
-    --    formatting = {
-    --        fields = { 'abbr', 'kind', 'menu' },
-    --        format = lspkind.cmp_format({
-    --            mode = 'text',
-    --        }),
-    --    },
+    formatting = {
+        fields = { 'abbr', 'kind', 'menu' },
+        format = lspkind.cmp_format({
+            mode = 'text',
+        }),
+    },
 })
 
 -- telescope
@@ -164,7 +163,7 @@ require("nvim-treesitter.configs").setup({
 
 -- key mapping
 vim.g.mapleader = " "
-vim.keymap.set({ "n" }, "<Esc><Esc>", ":nohl<CR>", {noremap =true, silent=true})
+vim.keymap.set({ "n" }, "<Esc><Esc>", ":nohl<CR>", { noremap = true, silent = true })
 vim.keymap.set({ "n" }, "[d", vim.diagnostic.goto_prev)
 vim.keymap.set({ "n" }, "]d", vim.diagnostic.goto_next)
 vim.keymap.set({ "n" }, "<space>q", vim.diagnostic.setloclist)
